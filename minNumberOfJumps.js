@@ -1,3 +1,7 @@
+/*
+ You are given a non-empty array of integers. Each element Represents the maximum number of steps you canTake forward. For example, if the element at index 1 is 3, you can go from index 1 to index 2, 3, or 4. Write a function that returns the minimum number of jumps needed to reach the final index. Note that jumping from index i to index i + x always constitutes 1 jump, no matter howLarge x is.
+ */
+
 function minNumberOfJumps(arr) {
   let jumps = 0 // counter for jumps
 	if (arr.length === 1) {
