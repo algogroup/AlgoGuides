@@ -38,18 +38,18 @@ const rivers = (arr) => {
     let riverCount = 1 // count the river
     if (arr[i][j + 1] && arr[i][j + 1] === 1) {
       riverCount += findRivers(i, j + 1)
-    } // if river continues east call findRivers on right coordinates and add it to the riverCount
+    } // if river continues east call findRivers on east coordinates and add it to the riverCount
     if (arr[i + 1] && arr[i + 1][j] === 1) {
       riverCount += findRivers(i + 1, j)
-    } // if river continues north call findRivers on right coordinates and add it to the riverCount
+    } // if river continues north call findRivers on north coordinates and add it to the riverCount
 
     if (arr[i-1] && arr[i - 1][j] === 1) {
       riverCount += findRivers(i - 1, j)
-    } // if river continues south call findRivers on right coordinates and add it to the riverCount
+    } // if river continues south call findRivers on south coordinates and add it to the riverCount
 
     if (arr[i][j - 1] && arr[i][j - 1] === 1) {
       riverCount += findRivers(i, j -1)
-    } // if river continues west call findRivers on right coordinates and add it to the riverCount
+    } // if river continues west call findRivers on west coordinates and add it to the riverCount
 
     return riverCount
   }
