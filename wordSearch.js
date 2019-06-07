@@ -19,36 +19,47 @@ function findWord(board, search) {
     for (let j = 0; j < board[i].length; j++) {
       if (board[i][j] === search[0]) {
         //found our starting point
-        let newCoord = checkNeighbors(board, [i, j], 0, search);
+        let newCoord = checkNeighbors([i, j], 0, search);
         if (newCoord) return true;
       }
     }
   }
+  function checkNeighbors(posArr, count, word) {
+    if (count === word.length - 1) return true;
+    board[posArr[0]][posArr[1]] = "+"; //Change letter to not use it again
+    // CHECK NEIGHBORS
+    if (
+      board[posArr[0] - 1] &&
+      board[posArr[0] - 1][posArr[1]] === word[count + 1]
+    ) {
+      if (checkNeighbors([posArr[0] - 1, posArr[1]], count + 1, word))
+        continue
+    }
+    if (
+      board[posArr[0] + 1] &&
+      board[posArr[0] + 1][posArr[1]] === word[count + 1]
+    ) {
+      if (checkNeighbors([posArr[0] + 1, posArr[1]], count + 1, word))
+        return true;
+    }
+    if (
+      board[posArr[0]] &&
+      board[posArr[0]][posArr[1] - 1] === word[count + 1]
+    ) {
+      if (checkNeighbors([posArr[0], posArr[1] - 1], count + 1, word))
+        return true;
+    }
+    if (
+      board[posArr[0]] &&
+      board[posArr[0]][posArr[1] + 1] === word[count + 1]
+    ) {
+      if (checkNeighbors([posArr[0], posArr[1] + 1], count + 1, word))
+        return true;
+    }
+    board[posArr[0]][posArr[1]] = word[count]; //reset letter
+    return false;
+  }
   return false;
 }
 
-function checkNeighbors(board, posArr, count, word) {
-  if (count === word.length - 1) return true;
-  board[posArr[0]][posArr[1]] = "+";
-  // CHECK NEIGHBORS
-  if (
-    board[posArr[0] - 1] &&
-    board[posArr[0] - 1][posArr[1]] === word[count + 1]
-  )
-    if (checkNeighbors(board, [posArr[0] - 1, posArr[1]], count + 1, word))
-      return true;
-  if (
-    board[posArr[0] + 1] &&
-    board[posArr[0] + 1][posArr[1]] === word[count + 1]
-  )
-    if (checkNeighbors(board, [posArr[0] + 1, posArr[1]], count + 1, word))
-      return true;
-  if (board[posArr[0]] && board[posArr[0]][posArr[1] - 1] === word[count + 1])
-    if (checkNeighbors(board, [posArr[0], posArr[1] - 1], count + 1, word))
-      return true;
-  if (board[posArr[0]] && board[posArr[0]][posArr[1] + 1] === word[count + 1])
-    if (checkNeighbors(board, [posArr[0], posArr[1] + 1], count + 1, word))
-      return true;
-  board[posArr[0]][posArr[1]] = word[count];
-  return false;
-}
+console.log(findWord(board, "SEED"));
