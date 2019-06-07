@@ -2,10 +2,8 @@ function powerset(array) {
   const output = [];
   for (let i = 0; i < Math.pow(2, array.length); i++) {
     const subarray = [];
-    // console.log(array.length);
-    // console.log(Math.pow(3, 4));
     for (let j = 0; j < array.length; j++) {
-      if (((1 << j) & i) > 0) {
+      if ((Math.pow(2, array.length) & i) > 0) {
         subarray.push(array[j]);
       }
     }
