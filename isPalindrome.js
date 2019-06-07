@@ -18,3 +18,4 @@ function isPalindrome(string) {
   //if you have reached this point, it means the string is palindrome so return true
   return true;
 }
+
