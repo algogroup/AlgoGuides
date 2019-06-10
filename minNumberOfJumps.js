@@ -1,6 +1,6 @@
-/*
- You are given a non-empty array of integers. Each element Represents the maximum number of steps you canTake forward. For example, if the element at index 1 is 3, you can go from index 1 to index 2, 3, or 4. Write a function that returns the minimum number of jumps needed to reach the final index. Note that jumping from index i to index i + x always constitutes 1 jump, no matter howLarge x is.
- */
+
+//Problem: You are given a non-empty array of integers. Each element Represents the maximum number of steps you canTake forward. For example, if the element at index 1 is 3, you can go from index 1 to index 2, 3, or 4. Write a function that returns the minimum number of jumps needed to reach the final index. Note that jumping from index i to index i + x always constitutes 1 jump, no matter howLarge x is.
+//Example: minNumberOfJumps([1,2,3,2,1]) => 3
 
 function minNumberOfJumps(arr) {
   let jumps = 0 // counter for jumps
@@ -19,7 +19,9 @@ function minNumberOfJumps(arr) {
       } // loop through each possible jump and add the index to its value to evaluate its trajectory
     }
     jumps ++
-    return jumps + minNumberOfJumps(arr.slice(bestJump))
+    return jumps + minNumberOfJumps(arr.slice(bestJumpIndex))
     // count the jump and run the function recursively to make the next jump
   }
 }
+
+console.log(minNumberOfJumps([1,2,3,2,1]))
