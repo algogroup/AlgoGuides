@@ -11,6 +11,9 @@ function powerset(array) {
   }
   return output;
 }
+
+
+
 // console.log(Permutations());
 // console.log(SubArray())[(1, 2, 3)];
 

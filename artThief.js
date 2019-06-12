@@ -15,3 +15,20 @@ const artHeist = gallery => {
   }
   return runningMaxTotal[gallery.length];
 };
+
+
+const artHeist2 = gallery => {
+  let lastMax = 0; // pointer to the current max 
+  let secondLastMax = 0; // pointer to last best combo
+  gallery.forEach(artValue => {
+    let tempLast = lastMax; 
+    let tempSecondLast = secondLastMax;
+    lastMax = Math.max(artValue + tempSecondLast, tempLast);
+    // compare the last best combo to the current one
+    secondLastMax = tempLast;
+    // move our pointer to the new last best combo
+  })
+  return lastMax
+}
+
+
