@@ -12,10 +12,20 @@ function powerset(array) {
   return output;
 }
 
+//powerset alternative
 
+function powerSet(arr) {
+  const subs = [[]];
+  for (let i = 0; i < arr.length; i++) {
+    const subsLen = subs.length; //must readjust length
+    for (let j = 0; j < subsLen; j++) {
+      subs.push(subs[j].concat(arr[i]));
+    }
+  }
+  return subs;
+}
 
-// console.log(Permutations());
-// console.log(SubArray())[(1, 2, 3)];
+console.log(powerSet([1, 2, 3]));
 
 // PERMUTATIONS: [[1,2,3][1,3,2][2,1,3][2,3,1][3,1,2][3,2,1]]
 // SUBSET: [1] [2,3] [3,2]
