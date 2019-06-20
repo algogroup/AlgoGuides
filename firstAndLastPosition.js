@@ -7,15 +7,17 @@
 
 //EXAMPLE: Input: nums = [5,7,7,8,8,10], target = 8
 //Output: [3,4]
+
+//helper function, utilizing binary search
 function check(arr, target) {
   let l = 0;
   let h = arr.length - 1;
   let mid = Math.floor(l + h / 2);
-  if (arr.length === 0 || arr.length === 1) return -1;
+  if (arr.length === 0 || arr.length === 1) return -1; //edge cases
   do {
     if (arr[mid] === target) return mid;
     if (arr[l] === target) return l;
-    if (arr[h] === target) return h;
+    if (arr[h] === target) return h; // if high, low, or mid is target, return it
     if (arr[mid] > target) h = mid;
     if (arr[mid] < target) l = mid;
     mid = Math.floor((l + h) / 2);
@@ -24,15 +26,15 @@ function check(arr, target) {
 }
 
 function searchRange(arr, tgt) {
-  if (arr.length === 1 && arr[0] === tgt) return [0, 0];
-  let idx = check(arr, tgt);
-  if (idx === -1) return [-1, -1];
+  if (arr.length === 1 && arr[0] === tgt) return [0, 0]; //edge case
+  let idx = check(arr, tgt); //call helper function
+  if (idx === -1) return [-1, -1]; //if return from check function is -1, return [-1, -1]
   let left = idx;
   let right = idx;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[left] === tgt) left--;
+    if (arr[left] === tgt) left--; //push left and right once we find the index to see the full range
     if (arr[right] === tgt) right++;
-    if (arr[left] !== tgt && arr[right] !== tgt) break;
+    if (arr[left] !== tgt && arr[right] !== tgt) break; //break case if neither left nor right are no longer target
   }
   return [left + 1, right - 1];
 }
