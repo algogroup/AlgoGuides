@@ -45,4 +45,4 @@ console.log(
     (target = 4)
   )
 );
-// Output: [3,4]
+// Output: [10,12]
