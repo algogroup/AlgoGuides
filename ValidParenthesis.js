@@ -19,6 +19,7 @@ function parenthesis(str) {
     "[": "]",
     "{": "}"
   };
+
   for (let i = 0; i < str.length; i++) {
     if (str[i] in pattern) {
       stack.push(str[i]); //if current letter in str is in pattern, push
